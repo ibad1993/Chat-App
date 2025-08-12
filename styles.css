@@ -385,3 +385,135 @@ body {
 .content-section {
   animation: slideIn 0.8s ease-out 0.2s both;
 }
+
+/* Interactive Features */
+.message-time {
+  font-size: 10px;
+  color: hsl(270, 7%, 64%);
+  opacity: 0.7;
+  margin-top: 4px;
+  display: block;
+}
+
+.typing-indicator {
+  background: white !important;
+  padding: 12px 15px !important;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  background: hsl(270, 7%, 64%);
+  border-radius: 50%;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Interactive Radio Buttons */
+.radio-btn {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.radio-btn:hover {
+  transform: scale(1.1);
+}
+
+.radio-btn.active {
+  background: white !important;
+}
+
+.radio-btn.active::after {
+  opacity: 1 !important;
+}
+
+/* Message Hover Effects */
+.message {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.message:hover {
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Send Button Animation */
+.send-btn {
+  transition: all 0.3s ease;
+}
+
+.send-btn:hover {
+  transform: scale(1.1);
+  background: hsl(293, 100%, 63%) !important;
+}
+
+/* Menu Button Animation */
+.menu-btn {
+  transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+/* Input Field Focus */
+.input-field:focus {
+  background: white;
+  box-shadow: 0 0 0 2px hsl(293, 100%, 63%);
+}
+
+/* Pricing Options Hover */
+.pricing-option {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pricing-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 0 -12px;
+}
+
+/* New Message Animation */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message {
+  animation: messageSlideIn 0.3s ease-out;
+}
