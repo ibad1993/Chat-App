@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repository](https://github.com/Ibad1993/Chat-App)
+- Live Site URL: [Live Demo](https://ibad1993.github.io/Chat-App/)
 
 ## My process
 
@@ -96,9 +96,9 @@ I plan to continue improving my skills in:
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- GitHub - [@yourusername](https://github.com/yourusername)
+- Frontend Mentor - [@Ibad1993](https://www.frontendmentor.io/profile/Ibad1993)
+- GitHub - [@Ibad1993](https://github.com/Ibad1993)
 
 ---
 
-**Note**: Remember to update the links above with your actual GitHub username and repository URLs once you've pushed your code to GitHub!
+**Note**: Your project is now live on GitHub Pages! 🚀
