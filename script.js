@@ -314,17 +314,22 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add click to copy functionality
             message.addEventListener('click', function() {
                 const text = this.querySelector('p').textContent;
-                navigator.clipboard.writeText(text).then(() => {
-                    // Show copy feedback
-                    const originalText = this.querySelector('p').textContent;
-                    this.querySelector('p').textContent = 'Copied! ✓';
-                    this.style.background = 'rgba(34, 197, 94, 0.1)';
-                    
-                    setTimeout(() => {
-                        this.querySelector('p').textContent = originalText;
-                        this.style.background = '';
-                    }, 1500);
-                });
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        // Show copy feedback
+                        const originalText = this.querySelector('p').textContent;
+                        this.querySelector('p').textContent = 'Copied! ✓';
+                        this.style.background = 'rgba(34, 197, 94, 0.1)';
+                        
+                        setTimeout(() => {
+                            this.querySelector('p').textContent = originalText;
+                            this.style.background = '';
+                        }, 1500);
+                    }).catch(() => {
+                        // Fallback for older browsers
+                        console.log('Copy failed, but that\'s okay!');
+                    });
+                }
             });
         });
     }
@@ -363,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add some realistic initial interaction
     setTimeout(() => {
-        addMessage('Hi! I'm ready to help with your dog walking needs. What would you like to know?', false, 2000);
+        addMessage('Hi! I\'m ready to help with your dog walking needs. What would you like to know?', false, 2000);
     }, 3000);
 
     // Auto-focus input field
@@ -372,11 +377,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add some fun Easter eggs
     let clickCount = 0;
     const avatar = document.querySelector('.avatar');
-    avatar.addEventListener('click', function() {
-        clickCount++;
-        if (clickCount === 5) {
-            addMessage('You found the secret! 🎉', false);
-            clickCount = 0;
-        }
+    if (avatar) {
+        avatar.addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 5) {
+                addMessage('You found the secret! 🎉', false);
+                clickCount = 0;
+            }
+        });
+    }
+
+    // Debug logging
+    console.log('Chat app initialized successfully!');
+    console.log('Available elements:', {
+        chatContainer: !!chatContainer,
+        inputField: !!inputField,
+        sendBtn: !!sendBtn,
+        pricingOptions: pricingOptions.length,
+        radioBtns: radioBtns.length,
+        menuBtn: !!menuBtn
     });
 });
