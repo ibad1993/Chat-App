@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-  <title>Chat App CSS Illustration</title>
+  <title>Chat App CSS Illustration - Interactive Dog Walker Chat</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,57 +18,57 @@
     <!-- Main Content -->
     <main class="main-content">
       <!-- Phone Mockup -->
-      <div class="phone-mockup">
+      <div class="phone-mockup" role="application" aria-label="Dog Walker Chat Application">
         <!-- Phone Header -->
         <div class="phone-header">
-          <div class="phone-notch"></div>
+          <div class="phone-notch" aria-hidden="true"></div>
           <div class="header-content">
             <div class="profile-info">
-              <img src="./images/avatar.jpg" alt="Samuel Green" class="avatar">
+              <img src="./images/avatar.jpg" alt="Samuel Green - Dog Walker" class="avatar" tabindex="0">
               <div class="user-details">
                 <h2 class="user-name">Samuel Green</h2>
                 <p class="user-status">Available to Walk</p>
               </div>
             </div>
-            <button class="menu-btn">⋮</button>
+            <button class="menu-btn" aria-label="Open menu" title="Menu">⋮</button>
           </div>
         </div>
 
         <!-- Chat Messages -->
-        <div class="chat-container">
-          <div class="message received">
+        <div class="chat-container" role="log" aria-label="Chat messages">
+          <div class="message received" role="article">
             <p>That sounds great. I'd be happy with that.</p>
           </div>
           
-          <div class="message received">
+          <div class="message received" role="article">
             <p>Could you send over some pictures of your dog, please?</p>
           </div>
           
-          <div class="message sent">
+          <div class="message sent" role="article">
             <div class="dog-images">
-              <img src="./images/dog-image-1.jpg" alt="Happy dog">
-              <img src="./images/dog-image-2.jpg" alt="Happy dog">
-              <img src="./images/dog-image-3.jpg" alt="Happy dog">
+              <img src="./images/dog-image-1.jpg" alt="Happy dog playing" loading="lazy">
+              <img src="./images/dog-image-2.jpg" alt="Happy dog running" loading="lazy">
+              <img src="./images/dog-image-3.jpg" alt="Happy dog resting" loading="lazy">
             </div>
             <p>Here are a few pictures. She's a happy girl!</p>
           </div>
           
-          <div class="message received">
+          <div class="message received" role="article">
             <p>Can you make it?</p>
           </div>
           
-          <div class="message sent">
+          <div class="message sent" role="article">
             <p>She looks so happy! The time we discussed works. How long shall I take her out for?</p>
           </div>
           
-          <div class="message received pricing-options">
-            <div class="pricing-option">
-              <div class="radio-btn"></div>
+          <div class="message received pricing-options" role="article">
+            <div class="pricing-option" tabindex="0" role="button" aria-label="Select 30 minute walk for $29">
+              <div class="radio-btn" aria-hidden="true"></div>
               <span class="duration">30 minute walk</span>
               <span class="price">$29</span>
             </div>
-            <div class="pricing-option">
-              <div class="radio-btn"></div>
+            <div class="pricing-option" tabindex="0" role="button" aria-label="Select 1 hour walk for $49">
+              <div class="radio-btn" aria-hidden="true"></div>
               <span class="duration">1 hour walk</span>
               <span class="price">$49</span>
             </div>
@@ -77,8 +77,15 @@
 
         <!-- Message Input -->
         <div class="message-input">
-          <input type="text" placeholder="Type a message…" class="input-field">
-          <button class="send-btn">›</button>
+          <input 
+            type="text" 
+            placeholder="Type a message…" 
+            class="input-field" 
+            aria-label="Type your message"
+            maxlength="500"
+            autocomplete="off"
+          >
+          <button class="send-btn" aria-label="Send message" title="Send">›</button>
         </div>
       </div>
 
@@ -90,13 +97,26 @@
           discuss arrangements and make bookings. Once the walk has been completed you can rate 
           your walker and book again all through the chat.
         </p>
+        
+        <!-- Interactive Features Info -->
+        <div class="features-info">
+          <h3>Interactive Features:</h3>
+          <ul>
+            <li>💬 Real-time chat with smart responses</li>
+            <li>📱 Fully responsive mobile & desktop design</li>
+            <li>💾 Chat history saved locally</li>
+            <li>🎯 Context-aware bot responses</li>
+            <li>📋 Click pricing options to book</li>
+            <li>🎨 Smooth animations & interactions</li>
+          </ul>
+        </div>
       </div>
     </main>
   </div>
 
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/ibad1993" target="_blank" rel="noopener">ibad1993</a>.
   </div>
 
   <script src="script.js"></script>

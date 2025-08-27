@@ -31,7 +31,7 @@ body {
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -41,22 +41,25 @@ body {
 /* Main Content */
 .main-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 80px;
+  gap: 40px;
   width: 100%;
   max-width: 1200px;
 }
 
 /* Phone Mockup */
 .phone-mockup {
-  width: 280px;
-  height: 570px;
+  width: 100%;
+  max-width: 320px;
+  height: 600px;
   background: white;
   border-radius: 30px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
+  order: 1;
 }
 
 /* Phone Header */
@@ -96,50 +99,56 @@ body {
   height: 32px;
   border-radius: 50%;
   border: 2px solid white;
+  object-fit: cover;
 }
 
 .user-details {
   display: flex;
   flex-direction: column;
-  gap: 2px;
 }
 
 .user-name {
   font-size: 14px;
   font-weight: 500;
-  color: hsl(276, 100%, 81%);
+  margin: 0;
 }
 
 .user-status {
   font-size: 12px;
-  color: hsl(276, 100%, 81%);
-  opacity: 0.8;
+  opacity: 0.9;
+  margin: 0;
 }
 
 .menu-btn {
   background: none;
   border: none;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
   padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }
 
 /* Chat Container */
 .chat-container {
+  flex: 1;
   padding: 15px;
-  background: hsl(270, 20%, 96%);
-  height: 400px;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  max-height: 400px;
+  background: hsl(270, 20%, 96%);
 }
 
 /* Messages */
 .message {
+  margin-bottom: 15px;
   max-width: 80%;
-  padding: 8px 12px;
+  word-wrap: break-word;
+}
+
+.message p {
+  margin: 0;
+  padding: 12px 15px;
   border-radius: 18px;
   font-size: 14px;
   line-height: 1.4;
@@ -147,16 +156,24 @@ body {
 
 .message.received {
   align-self: flex-start;
+}
+
+.message.received p {
   background: white;
-  color: hsl(276, 55%, 52%);
-  border-bottom-left-radius: 5px;
+  color: hsl(271, 36%, 24%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .message.sent {
   align-self: flex-end;
+  margin-left: auto;
+}
+
+.message.sent p {
   background: white;
-  color: hsl(270, 7%, 64%);
-  border-bottom-right-radius: 5px;
+  color: hsl(271, 36%, 24%);
+  text-align: right;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Dog Images */
@@ -164,25 +181,24 @@ body {
   display: flex;
   gap: 8px;
   margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .dog-images img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 12px;
   object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Pricing Options */
 .pricing-options {
-  background: linear-gradient(135deg, hsl(293, 100%, 63%) 0%, hsl(264, 100%, 61%) 100%);
-  color: white;
-  padding: 15px;
+  background: linear-gradient(135deg, hsl(264, 100%, 61%) 0%, hsl(293, 100%, 63%) 100%);
   border-radius: 18px;
-  border-bottom-left-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  padding: 15px;
+  margin-top: 8px;
 }
 
 .pricing-option {
@@ -190,14 +206,23 @@ body {
   align-items: center;
   gap: 12px;
   padding: 8px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pricing-option:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 12px;
 }
 
 .radio-btn {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border: 2px solid hsl(289, 100%, 72%);
   border-radius: 50%;
   position: relative;
+  background: transparent;
+  transition: all 0.3s ease;
 }
 
 .radio-btn::after {
@@ -206,34 +231,39 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background: white;
   border-radius: 50%;
   opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.pricing-option:first-child .radio-btn::after {
+.radio-btn.active::after {
   opacity: 1;
 }
 
 .duration {
-  flex: 1;
+  color: white;
   font-size: 14px;
+  font-weight: 500;
+  flex: 1;
 }
 
 .price {
-  font-weight: 700;
+  color: white;
   font-size: 16px;
+  font-weight: 700;
 }
 
 /* Message Input */
 .message-input {
-  padding: 15px;
-  background: white;
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 15px;
+  background: white;
+  border-top: 1px solid hsl(270, 20%, 96%);
 }
 
 .input-field {
@@ -243,8 +273,8 @@ body {
   padding: 12px 15px;
   border-radius: 25px;
   background: hsl(270, 20%, 96%);
-  color: hsl(271, 36%, 24%);
   font-size: 14px;
+  transition: all 0.3s ease;
 }
 
 .input-field::placeholder {
@@ -252,8 +282,8 @@ body {
 }
 
 .send-btn {
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   border: none;
   border-radius: 50%;
   background: hsl(271, 36%, 24%);
@@ -263,31 +293,72 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s;
-}
-
-.send-btn:hover {
-  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
 
 /* Content Section */
 .content-section {
-  flex: 1;
-  max-width: 450px;
-  color: hsl(271, 36%, 24%);
+  text-align: center;
+  order: 2;
+  max-width: 500px;
 }
 
 .main-title {
-  font-size: 48px;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 25px;
-  line-height: 1.1;
+  color: hsl(271, 36%, 24%);
+  margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 .description {
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 1.1rem;
   color: hsl(270, 7%, 64%);
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Features Info Section */
+.features-info {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
+
+.features-info h3 {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.features-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-info li {
+  color: white;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.features-info li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.features-info li:hover {
+  transform: translateX(5px);
+  color: hsl(276, 100%, 81%);
 }
 
 /* Attribution */
@@ -296,107 +367,33 @@ body {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 11px;
   text-align: center;
-  color: hsl(271, 36%, 24%);
+  color: white;
+  font-size: 14px;
+  z-index: 10;
 }
 
 .attribution a {
-  color: hsl(228, 45%, 44%);
+  color: white;
   text-decoration: none;
+  font-weight: 500;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .main-content {
-    gap: 40px;
-  }
-  
-  .main-title {
-    font-size: 36px;
-  }
-  
-  .description {
-    font-size: 16px;
-  }
+.attribution a:hover {
+  text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .main-content {
-    flex-direction: column;
-    gap: 60px;
-    padding: 40px 0;
-  }
-  
-  .phone-mockup {
-    width: 260px;
-    height: 540px;
-  }
-  
-  .main-title {
-    font-size: 32px;
-    text-align: center;
-  }
-  
-  .description {
-    text-align: center;
-  }
-  
-  .background-gradient {
-    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 85%);
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 15px;
-  }
-  
-  .phone-mockup {
-    width: 240px;
-    height: 520px;
-  }
-  
-  .main-title {
-    font-size: 28px;
-  }
-  
-  .description {
-    font-size: 15px;
-  }
-}
-
-/* Animation for initial load */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.phone-mockup {
-  animation: slideIn 0.8s ease-out;
-}
-
-.content-section {
-  animation: slideIn 0.8s ease-out 0.2s both;
-}
-
-/* Interactive Features */
+/* Enhanced Functionality Styles */
 .message-time {
-  font-size: 10px;
+  font-size: 11px;
   color: hsl(270, 7%, 64%);
-  opacity: 0.7;
   margin-top: 4px;
   display: block;
+  text-align: right;
 }
 
 .typing-indicator {
-  background: white !important;
+  background: white;
   padding: 12px 15px !important;
 }
 
@@ -516,4 +513,255 @@ body {
 
 .message {
   animation: messageSlideIn 0.3s ease-out;
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .main-content {
+    gap: 30px;
+  }
+  
+  .phone-mockup {
+    max-width: 300px;
+    height: 550px;
+    order: 1;
+  }
+  
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+  
+  .chat-container {
+    max-height: 350px;
+  }
+  
+  .dog-images img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .features-info {
+    padding: 20px;
+    margin: 0 10px;
+  }
+  
+  .features-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .features-info li {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .container {
+    padding: 5px;
+  }
+  
+  .phone-mockup {
+    max-width: 280px;
+    height: 520px;
+  }
+  
+  .main-title {
+    font-size: 1.8rem;
+  }
+  
+  .description {
+    font-size: 0.95rem;
+  }
+  
+  .features-info {
+    padding: 15px;
+  }
+  
+  .features-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .features-info li {
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet Responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-content {
+    flex-direction: row;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .phone-mockup {
+    order: 1;
+  }
+  
+  .content-section {
+    order: 2;
+    text-align: left;
+    max-width: 400px;
+  }
+  
+  .features-info {
+    margin: 0;
+  }
+}
+
+/* Desktop Layout */
+@media (min-width: 1025px) {
+  .main-content {
+    flex-direction: row;
+    gap: 80px;
+    align-items: center;
+  }
+  
+  .phone-mockup {
+    order: 1;
+    width: 320px;
+    height: 600px;
+  }
+  
+  .content-section {
+    order: 2;
+    text-align: left;
+    max-width: 500px;
+  }
+  
+  .main-title {
+    font-size: 3rem;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+  }
+  
+  .features-info {
+    margin: 0;
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1440px) {
+  .main-content {
+    gap: 100px;
+  }
+  
+  .content-section {
+    max-width: 600px;
+  }
+  
+  .features-info {
+    padding: 30px;
+  }
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid hsl(293, 100%, 63%);
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Focus States */
+.input-field:focus,
+.send-btn:focus,
+.menu-btn:focus,
+.pricing-option:focus {
+  outline: 2px solid hsl(293, 100%, 63%);
+  outline-offset: 2px;
+}
+
+/* Improved Touch Targets for Mobile */
+@media (max-width: 768px) {
+  .send-btn {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .menu-btn {
+    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .pricing-option {
+    padding: 12px 0;
+  }
+  
+  .radio-btn {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .message.received p,
+  .message.sent p {
+    border: 2px solid hsl(271, 36%, 24%);
+  }
+  
+  .input-field {
+    border: 2px solid hsl(271, 36%, 24%);
+  }
+  
+  .features-info {
+    border: 2px solid white;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: hsl(271, 36%, 24%);
+  }
+  
+  .phone-mockup {
+    background: hsl(270, 20%, 96%);
+  }
+  
+  .main-title {
+    color: white;
+  }
+  
+  .description {
+    color: hsl(276, 100%, 81%);
+  }
 }
